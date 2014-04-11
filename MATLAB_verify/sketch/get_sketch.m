@@ -2,16 +2,16 @@ clc
 clear
 close all
 
-n_sketches = 4;
+n_sketches = 5;
+
 for i = 1:n_sketches
     [X(i) Y(i)]=ginput(1);hold on;   
-    plot(X,Y);title('original sketch');hold on;drawnow;
+    plot(X,Y,'-o');title('original sketch');hold on;drawnow;
     set(gca, 'XLim', [0.0 1.0]);
     set(gca, 'YLim', [0.0 1.0]);
 end
 
 %%
-%TODO: NORMALIZE the sketch
 %DRAWBACK: cannot recognize different size shape: 
 %e.g. small square v.s. big square
 
@@ -42,7 +42,7 @@ for i = 2:n_sketches
         Y_interpolate(end+1) = Y(i-1)+j*vector_y/dist;
     end
 end
-figure;plot(X_interpolate,Y_interpolate); title('interpolated and normalized sketch');
+figure;plot(X_interpolate,Y_interpolate,'o'); title('interpolated and normalized sketch');
 set(gca, 'XLim', [0.0 1.0]);
 set(gca, 'YLim', [0.0 1.0]);
 % length(X_interpolate)
@@ -79,7 +79,7 @@ for i = 1:grid_length-1
 end
 
 %coordinates in 32x32 grid
-centroid_x = mean(tri_centroid_x); 
+centroid_x = mean(tri_centroid_x);
 centroid_y = mean(tri_centroid_y);
 % plot(centroid_x,centroid_y,'*');hold on;
 % plot(x_mean,y_mean,'r*');hold on;
@@ -89,21 +89,27 @@ for i = 1:grid_length
     diff(i) = sqrt((X_grid(i)-centroid_x)^2 + (Y_grid(i)-centroid_y)^2);
 end
 diff = diff./(32*sqrt(2));
-hist = zeros(ceil(100*sqrt(2)),1);
+hist_test = zeros(ceil(100*sqrt(2)),1);
 
 for i = 1:grid_length
-    hist(round(diff(i).*100)) = hist(round(diff(i).*100)) +1;
+    hist_test(round(diff(i).*100)) = hist_test(round(diff(i).*100)) +1;
 end
 
-figure,plot(hist); title('histogram')
+figure,plot(hist_test); title('histogram')
 
 %%
-%similarity
+% %similarity
 load('hist_circle.mat');
+similarity_circle = sum(hist_test.*hist)/(norm(hist_test)*norm(hist))
 load('hist_square.mat');
+similarity_square = sum(hist_test.*hist)/(norm(hist_test)*norm(hist))
 load('hist_tri.mat');
+similarity_tri = sum(hist_test.*hist)/(norm(hist_test)*norm(hist))
 load('hist_halfcircle.mat');
-similarity_circle = sum(hist.*hist_circle)/(norm(hist)*norm(hist_circle))
-similarity_square = sum(hist.*hist_square)/(norm(hist)*norm(hist_square))
-similarity_tri = sum(hist.*hist_tri)/(norm(hist)*norm(hist_tri))
-similarity_halfcircle = sum(hist.*hist_halfcircle)/(norm(hist)*norm(hist_halfcircle))
+similarity_halfcircle = sum(hist_test.*hist)/(norm(hist_test)*norm(hist))
+load('back_2_hist_front.mat');
+similarity_front_view_of_chair_back_2 = sum(hist_test.*hist_front)/(norm(hist_test)*norm(hist_front))
+load('back_6_hist_front.mat');
+similarity_front_view_of_chair_back_6 = sum(hist_test.*hist_front)/(norm(hist_test)*norm(hist_front))
+load('back_36_hist_front.mat');
+similarity_front_view_of_chair_back_36 = sum(hist_test.*hist_front)/(norm(hist_test)*norm(hist_front))
