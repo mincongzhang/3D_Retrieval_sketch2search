@@ -12,7 +12,7 @@
 // make std:: accessible
 using namespace std;
 
-//store all meshes
+//Queue for all meshes
 vector<MyMesh>  meshQueue;
 
 bool NOISE_CONTROL = false;
@@ -21,7 +21,7 @@ bool SKETCH_CONTROL = false;
 bool RETRIEVAL_CONTROL = false;
 
 //add noise variable
-double noise_standard_deviation = 0.01;  //standard_deviation for adding noise
+double noise_standard_deviation = 0.01; 
 
 //retrieval variables
 vector<double> sketchpoint_x;
@@ -341,6 +341,7 @@ void COpenGLControl::oglDrawScene(void)
 		grid_id_x.clear();
 		grid_id_y.clear();
 		//MeshSketchRetrieval(meshQueue.at(meshsize-1),sketchpoint_x,sketchpoint_y,grid_id_x,grid_id_y);
+		//DEBUG for grid
 		MeshSketchRetrieval(meshQueue.at(meshsize-1),scaling_x,scaling_y,
 						    sketchpoint_x,sketchpoint_y,
 						    grid_id_x,grid_id_y);
@@ -355,9 +356,10 @@ void COpenGLControl::oglDrawScene(void)
 			//sketch
 			if(!SKETCH_CONTROL)
 			{
-				//DANGER! NEED FURTHER CONSIDERATION DEBUG
+				//Restore rotated 3D object
 				projected_mesh = meshQueue.at(i);
 			}
+			//Get 2D projected view of rotated 3D object
 			if(SKETCH_CONTROL)
 			{
 				glPushMatrix();
@@ -383,7 +385,7 @@ void COpenGLControl::oglDrawScene(void)
 				glColor3f(GLfloat(1.0), GLfloat(1.0), GLfloat(0.0));
 				glPointSize(2.0);
 				glBegin(GL_POINTS);
-				for(int i = 0;i<sketchpoint_x.size();i++)
+				for(unsigned int i = 0;i<sketchpoint_x.size();i++)
 				{
 					glVertex3f((float)(sketchpoint_x.at(i)/(scaling_x*100.0)-0.5)*5,(float)(0.5-sketchpoint_y.at(i)/(scaling_y*100.0))*5,0.0f);
 				}
@@ -394,7 +396,6 @@ void COpenGLControl::oglDrawScene(void)
 				//initial the factors
 				m_fPosX =  0.0f;						 // X position of model in camera view
 				m_fPosY = -0.1f;					     // Y position of model in camera view
-				//m_fZoom = 1.0f;	
 				m_fRotX =  0.0f;						 // Rotation on model in camera view
 				m_fRotY	=  0.0f;						 // Rotation on model in camera view
 			}
@@ -470,12 +471,11 @@ void COpenGLControl::oglDrawScene(void)
 					glColor3f(GLfloat(0.0), GLfloat(1.0), GLfloat(1.0));
 					glPointSize(2.0);
 					glBegin(GL_POINTS);
-					for(int i = 0 ;i<grid_id_x.size();i++){
+					for(unsigned int i = 0 ;i<grid_id_x.size();i++){
 						glVertex3f(float(grid_id_x.at(i))/31,float(grid_id_y.at(i))/31,0.0);
 					}
 					glEnd();
-				}
-
+				}//end draw grid
 			}//end else
 		} //end if(meshsize>0)
 	}//end for (unsigned int i=0;i<meshsize;i++)
