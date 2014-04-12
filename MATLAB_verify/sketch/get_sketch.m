@@ -2,7 +2,7 @@ clc
 clear
 close all
 
-n_sketches = 5;
+n_sketches = 40;
 
 for i = 1:n_sketches
     [X(i) Y(i)]=ginput(1);hold on;   
@@ -60,6 +60,7 @@ for i = 1:n_points
 end
 
 [Y_grid,X_grid] = find(grid == 1);
+plot(X_grid,Y_grid,'.');title('grid');
 
 %%
 % get centroid in 32x32 grid
