@@ -5,7 +5,7 @@ close all
 %%
 % get model point cloud 
 list = [2 5 6 8 9 12 14 16 18 26 36 37 57 64 69 76 77 82 87 88 102 124 128 140 142 148 164 168 188 195];
-% list = [26]; %DEBUG
+% list = [26]; 
 for i = 1:length(list)
     close all
     filename = ['back_',num2str(list(i)),'_.mat'];
