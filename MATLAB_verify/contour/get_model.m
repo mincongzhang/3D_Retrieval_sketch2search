@@ -5,37 +5,43 @@ close all
 %%
 % get model point cloud 
 list = [2 5 6 8 9 12 14 16 18 26 36 37 57 64 69 76 77 82 87 88 102 124 128 140 142 148 164 168 188 195];
+% list = [26]; %DEBUG
 for i = 1:length(list)
     close all
     filename = ['back_',num2str(list(i)),'_.mat'];
     hist_filename = ['back_',num2str(list(i)),'_hist_front.mat'];
     load(filename);
-    MAX = max(abs(data(:)));
-    X = data(:,1)./MAX;
-    Y = data(:,2)./MAX;
-    Z = data(:,3)./MAX;
 
+    X = data(:,1);
+    Y = data(:,2);
+    Z = data(:,3);
+    
     %avoid negative & move to original coordinate
     X = X - min(X);
     Y = Y - min(Y);
     Z = Z - min(Z);
+    
+    MAX = max([max(X),max(Y),max(Z)]);
+    X = X./MAX;
+    Y = Y./MAX;
+    Z = Z./MAX;
 
     x_floor = min([min(X(:)),min(Y(:)),min(Z(:))]);
     x_ceil  = max([max(X(:)),max(Y(:)),max(Z(:))]);
-
+    
     figure,plot(X,Y,'.'); title('front');
     set(gca, 'XLim', [x_floor x_ceil]);
     set(gca, 'YLim', [x_floor x_ceil]);
     print(gcf,'-dpng',[num2str(list(i)),'.png'])   % 保存为png格式的图片
-
-    %figure,plot(Z,Y,'.'); title('side');
+    %pause(1)
+    figure,plot(Z,Y,'.'); title('side');
     set(gca, 'XLim', [x_floor x_ceil]);
     set(gca, 'YLim', [x_floor x_ceil]);
-
-    %figure,plot(X,Z,'.'); title('up');
+    %pause(1)
+    figure,plot(X,Z,'.'); title('up');
     set(gca, 'XLim', [x_floor x_ceil]);
     set(gca, 'YLim', [x_floor x_ceil]);
-
+    %pause(1)
     %%
     %map to 32x32 grid
     grid_front = zeros(32,32);
@@ -48,14 +54,15 @@ for i = 1:length(list)
 
     %frond Grid (to avoid double count sketch point in the same grid)
     for i = 1:n_points
-        grid_front(Y(i)+1,X(i)+1) = 1; % avoid coordinate = 0, after normalize the sketch
+        grid_front(Y(i)+1,X(i)+1) = 1; % avoid coordinate = 0, after normalize the sketch  actually the grid is 1 - 33
     end
 
     [Y_grid_front,X_grid_front] = find(grid_front == 1);
-    %figure,plot(X_grid_front,Y_grid_front,'.');title('grid front'); 
-    set(gca, 'XLim', [0.0 32.0]);
-    set(gca, 'YLim', [0.0 32.0]);
-
+    figure,plot(X_grid_front,Y_grid_front,'.');title('grid front'); 
+    set(gca, 'XLim', [1.0 33.0]); %actually the grid is 1 - 33
+    set(gca, 'YLim', [1.0 33.0]);
+    %pause(1)
+    
     % %side Grid (to avoid double count sketch point in the same grid)
     % for i = 1:n_points
     %     grid_side(Y(i)+1,Z(i)+1) = 1; % avoid coordinate = 0, after normalize the sketch
