@@ -24,5 +24,6 @@ typedef OpenMesh::PolyMesh_ArrayKernelT<>  MyMesh;
 void loadHistogram(string filname,double *histogram);
 double similarity(double *histogram_test,double *histogram_sketch);
 void qsort_getid(double array[],double id_array[], int left_id, int right_id);
+void swap(double array[], int i, int j);
 double round(double number);
 double FindMaxDistance(MyMesh &mesh);

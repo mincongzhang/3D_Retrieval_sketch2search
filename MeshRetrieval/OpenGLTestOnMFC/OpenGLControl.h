@@ -18,7 +18,8 @@ extern  vector<MyMesh> meshQueue;
 extern bool NOISE_CONTROL;
 extern bool NORMALIZE_CONTROL;
 extern bool SKETCH_CONTROL;
-extern bool RETRIEVAL_CONTROL;
+extern int RETRIEVAL_CONTROL;
+extern double theta_x,theta_y;
 
 class COpenGLControl : public CWnd
 {
@@ -67,4 +68,5 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 
 	DECLARE_MESSAGE_MAP()
+
 };

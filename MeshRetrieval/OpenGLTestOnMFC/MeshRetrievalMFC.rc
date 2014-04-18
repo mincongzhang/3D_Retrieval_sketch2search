@@ -104,12 +104,19 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     CONTROL         "",IDC_PIC_OPENGL,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,24,17,503,272
     PUSHBUTTON      "LoadMesh",Load,30,297,57,14
-    LTEXT           "Left mouse button: Rotate      Mid mouse button: Zoom in/out Right mouse button: Translate",IDC_STATIC,445,319,99,28
+    LTEXT           "Left mouse button: Rotate      Mid mouse button: Zoom in/out Right mouse button: Translate",IDC_STATIC,442,305,99,28
     PUSHBUTTON      "AddNoise",Noise,29,322,57,14
     PUSHBUTTON      "Normalize",Normalize,103,321,60,14
     PUSHBUTTON      "Sketch",Sketch,104,298,59,14
-    PUSHBUTTON      "Rotation",Rotation,182,321,50,14
-    PUSHBUTTON      "Retrieval",Retrieval,181,298,50,14
+    PUSHBUTTON      "RetrievalSeat",RetrievalSeat,178,321,54,14
+    PUSHBUTTON      "RetrievalBack",RetrievalBack,177,298,53,14
+    CONTROL         "Candidate1",CANDIDATE1,"Button",BS_AUTORADIOBUTTON,261,310,53,10
+    CONTROL         "Candidate2",CANDIDATE2,"Button",BS_AUTORADIOBUTTON,261,322,53,10
+    CONTROL         "Candidate3",CANDIDATE3,"Button",BS_AUTORADIOBUTTON,314,310,53,10
+    CONTROL         "Candidate4",CANDIDATE4,"Button",BS_AUTORADIOBUTTON,314,322,53,10
+    CONTROL         "Candidate5",CANDIDATE5,"Button",BS_AUTORADIOBUTTON,367,310,53,10
+    CONTROL         "Candidate6",CANDIDATE6,"Button",BS_AUTORADIOBUTTON,367,322,53,10
+    GROUPBOX        "Candidate",IDC_STATIC,250,296,173,41
 END
 
 

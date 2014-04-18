@@ -22,7 +22,15 @@
 #define VRMLExport                      1011
 #define Sketch                          1012
 #define Rotation                        1013
+#define RetrievalSeat                   1013
 #define Retrieval                       1014
+#define RetrievalBack                   1014
+#define CANDIDATE1                      1015
+#define CANDIDATE2                      1016
+#define CANDIDATE3                      1017
+#define CANDIDATE4                      1018
+#define CANDIDATE5                      1019
+#define CANDIDATE6                      1020
 
 // Next default values for new objects
 // 
@@ -30,7 +38,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1015
+#define _APS_NEXT_CONTROL_VALUE         1021
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

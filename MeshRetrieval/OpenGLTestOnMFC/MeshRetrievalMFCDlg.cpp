@@ -11,6 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
+int base = 0;
 
 // CAboutDlg dialog used for App About
 char fileName[256]={0};
@@ -67,8 +68,14 @@ BEGIN_MESSAGE_MAP(CMeshRetrievalMFCDlg, CDialog)
 	ON_BN_CLICKED(Noise, &CMeshRetrievalMFCDlg::OnBnClickedNoise)
 	ON_BN_CLICKED(Normalize, &CMeshRetrievalMFCDlg::OnBnClickedNormalize)
 	ON_BN_CLICKED(Sketch, &CMeshRetrievalMFCDlg::OnBnClickedSketch)
-	ON_BN_CLICKED(Rotation, &CMeshRetrievalMFCDlg::OnBnClickedRotation)
-	ON_BN_CLICKED(Retrieval, &CMeshRetrievalMFCDlg::OnBnClickedRetrieval)
+	ON_BN_CLICKED(CANDIDATE1, &CMeshRetrievalMFCDlg::OnBnClickedCandidate1)
+	ON_BN_CLICKED(CANDIDATE2, &CMeshRetrievalMFCDlg::OnBnClickedCandidate2)
+	ON_BN_CLICKED(CANDIDATE3, &CMeshRetrievalMFCDlg::OnBnClickedCandidate3)
+	ON_BN_CLICKED(CANDIDATE4, &CMeshRetrievalMFCDlg::OnBnClickedCandidate4)
+	ON_BN_CLICKED(CANDIDATE5, &CMeshRetrievalMFCDlg::OnBnClickedCandidate5)
+	ON_BN_CLICKED(CANDIDATE6, &CMeshRetrievalMFCDlg::OnBnClickedCandidate6)
+	ON_BN_CLICKED(RetrievalBack, &CMeshRetrievalMFCDlg::OnBnClickedRetrievalback)
+	ON_BN_CLICKED(RetrievalSeat, &CMeshRetrievalMFCDlg::OnBnClickedRetrievalseat)
 END_MESSAGE_MAP()
 
 
@@ -142,6 +149,8 @@ void CMeshRetrievalMFCDlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CMeshRetrievalMFCDlg::OnPaint()
 {
+
+
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // device context for painting
@@ -254,14 +263,46 @@ void CMeshRetrievalMFCDlg::OnBnClickedSketch()
 	SKETCH_CONTROL =! SKETCH_CONTROL;
 }
 
-void CMeshRetrievalMFCDlg::OnBnClickedRetrieval()
+void CMeshRetrievalMFCDlg::OnBnClickedRetrievalback()
 {
-	RETRIEVAL_CONTROL =true;
+	RETRIEVAL_CONTROL = 1;
+	base = 0;
 	SKETCH_CONTROL =! SKETCH_CONTROL;
 }
 
-
-void CMeshRetrievalMFCDlg::OnBnClickedRotation()
+void CMeshRetrievalMFCDlg::OnBnClickedRetrievalseat()
 {
-	// TODO: Add your control notification handler code here
+	RETRIEVAL_CONTROL = 2;
+	base = 10;
+	SKETCH_CONTROL =! SKETCH_CONTROL;
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate1()
+{
+	ChooseCandidate(candidate_index_array,base+0);
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate2()
+{
+	ChooseCandidate(candidate_index_array,base+1);
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate3()
+{
+	ChooseCandidate(candidate_index_array,base+2);
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate4()
+{
+	ChooseCandidate(candidate_index_array,base+3);
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate5()
+{
+	ChooseCandidate(candidate_index_array,base+4);
+}
+
+void CMeshRetrievalMFCDlg::OnBnClickedCandidate6()
+{
+	ChooseCandidate(candidate_index_array,base+5);
 }
