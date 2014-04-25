@@ -1,7 +1,7 @@
 3D_Retrieval_sketch2search
 ==========================
 
-[https://www.youtube.com/watch?v=pWMIwprKJuw] (Demo)
+[Demo](https://www.youtube.com/watch?v=pWMIwprKJuw/)
 
 Sketch to search 3D retrieval system
 
