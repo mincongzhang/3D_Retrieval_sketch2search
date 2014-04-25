@@ -11,4 +11,4 @@ Sketch to search 3D retrieval system
 
 4. Apply quick sort and return 6 candidates models' indexes with high similarities
 
-[Video Demo](https://www.youtube.com/watch?v=pWMIwprKJuw/)
+  [Video Demo](https://www.youtube.com/watch?v=pWMIwprKJuw/)
