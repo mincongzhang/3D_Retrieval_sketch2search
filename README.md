@@ -1,7 +1,7 @@
 3D_Retrieval_sketch2search
 ==========================
 
-Sketch to search 3D retrieval system
+Sketch to search 3D retrieval system:  [Video Demo](https://www.youtube.com/watch?v=pWMIwprKJuw/)
 
 1. Use Light field to extract 2D silhouettes from 3D models in several views
 
@@ -11,4 +11,3 @@ Sketch to search 3D retrieval system
 
 4. Apply quick sort and return 6 candidates models' indexes with high similarities
 
-  [Video Demo](https://www.youtube.com/watch?v=pWMIwprKJuw/)
