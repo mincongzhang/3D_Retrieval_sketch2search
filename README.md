@@ -13,3 +13,6 @@ Sketch to search 3D retrieval system:  [Video Demo](https://www.youtube.com/watc
 
 4. Apply quick sort and return 6 candidates models' indexes with high similarities
 
+
+2014.5.5
+New idea: use affine invariant detectors?
