@@ -16,6 +16,3 @@ Sketch to search 3D retrieval system:  [Video Demo](https://www.youtube.com/watc
 
 2014.5.5  
 New idea: use affine invariant detectors?  
-难点：  
-(1)kdtree数据结构转换  
-(2)算法优化减少时间复杂度  
