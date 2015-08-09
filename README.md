@@ -14,5 +14,9 @@ Sketch to search 3D retrieval system:  [Video Demo](https://www.youtube.com/watc
 4. Sort and return 6 candidates models' indexes with high similarities
 
 
-2014.5.5  
+#### 2014.5.5  
 New idea: use affine invariant detectors?  
+
+#### 2015.8.9
+Sketch-a-Net: Deep Network for Sketch Recognition  
+http://gitxiv.com/posts/huBwKaLb489L3NRSF/sketch-a-net-deep-network-for-sketch-recognition
